@@ -3,5 +3,5 @@ project(stereogramSolver)
 
 find_package(OpenCV REQUIRED)
 
-add_executable(stereogramSolver main.cpp StereogramBuilder.cpp StereogramSolver.cpp)
+add_executable(stereogramSolver src/main.cpp src/StereogramBuilder.cpp src/StereogramSolver.cpp)
 target_link_libraries(stereogramSolver ${OpenCV_LIBS})

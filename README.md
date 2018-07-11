@@ -2,7 +2,7 @@
 
 Attempts to solve [autostereograms](http://en.wikipedia.org/wiki/Autostereogram) programmatically.
 
-![Screenshot](https://raw.github.com/tuzz/magic_eye/master/screen_shot.png)
+![Screenshot](https://github.com/MikhailPedus/AutostereogramSolver/blob/master/shark.png)
 
 ## How it works
 
@@ -18,22 +18,14 @@ Although simple, this algorithm seems to work relatively well and is efficient t
 
 ```
 # Install dependencies.
-brew install opencv
+apt-get install libopencv-dev
 
 # Create a build directory.
-mkdir /tmp/build
-cd /tmp/build
+mkdir /build
+cd /build
 
 # Build and run.
-cmake path/to/src
+cmake ..
 make
 ./stereogramSolver shark.png
-```
-
-## Vim
-
-If you're using Vim, you can speed this up by mapping the build script to a key:
-
-```
-:nmap - :w \| !mkdir -p /tmp/build && cd /tmp/build && cmake path/to/src && make && ./magic_eye test.jpg
 ```
