@@ -1,7 +1,7 @@
 #include "StereogramSolver.h"
 static void help() {
 	printf("\nThis is a autostereogram solver.\n"
-		"Usage: stereogramBuilder\n"
+		"Usage: stereogramSolver\n"
 		"		-s=<path>			# the path to stereogram image\n"
 		"		[-t=<threadsCount>]		# the number of threads for faster multithread processing. Value by default:2\n"
 		"		[-o=<path>]			# the path to save result image\n"

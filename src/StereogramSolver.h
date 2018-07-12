@@ -3,7 +3,7 @@
 #include <thread>
 #include <mutex>
 
-#include <opencv2\opencv.hpp>
+#include <opencv2/opencv.hpp>
 
 #define MIN_REPEAT_SEGMENTS_COUNT 4
 #define MAX_REPEAT_SEGMENTS_COUNT 20

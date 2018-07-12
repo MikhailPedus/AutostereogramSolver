@@ -27,5 +27,9 @@ cd /build
 # Build and run.
 cmake ..
 make
-./stereogramSolver shark.png
+# For building stereogram:
+./stereogramBuilder -t=../texture/wood.jpg -d=../depthmap/girl.jpg
+
+# For solving your stereogram:
+./stereogramSolver -s=../stereogram/shark.png
 ```

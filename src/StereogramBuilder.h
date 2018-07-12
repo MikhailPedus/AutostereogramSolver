@@ -1,7 +1,7 @@
 #ifndef STEREOGRAMBUILDER_H
 #define STEREOGRAMBUILDER_H
 
-#include <opencv2\opencv.hpp>
+#include <opencv2/opencv.hpp>
 
 #define DEPTH_LAYERS_COUNT 16
 #define REPEAT_OFFSET 120
