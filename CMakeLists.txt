@@ -10,13 +10,16 @@ endif ()
 
 project(stereogramBuilder)
 project(stereogramSolver)
+project(depthmapDisplayer)
 
 find_package(Threads)
 find_package(OpenCV REQUIRED)
 
 add_executable(stereogramBuilder src/mainBuilder.cpp src/StereogramBuilder.cpp)
 add_executable(stereogramSolver src/mainSolver.cpp src/StereogramSolver.cpp)
+add_executable(depthmapDisplayer src/mainDisplayer.cpp src/DepthmapDisplayer.cpp)
 
 target_link_libraries(stereogramBuilder ${OpenCV_LIBS})
 target_link_libraries(stereogramSolver ${OpenCV_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(depthmapDisplayer ${OpenCV_LIBS})
 

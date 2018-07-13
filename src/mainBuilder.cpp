@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 		return -1;
 	}
 	cv::Mat depthMap = cv::imread(depthMapPath, cv::IMREAD_GRAYSCALE);
-	if (texture.empty()) {
+	if (depthMap.empty()) {
 		std::cout << "ERROR. Cannot load depth map image by path:" << depthMapPath << std::endl;
 		help();
 		return -1;
