@@ -18,6 +18,8 @@ Although simple, this algorithm seems to work relatively well and is efficient t
 
 ```
 # Install dependencies.
+apt-get install libgtk2.0-dev
+apt-get install libvtk6-dev
 apt-get install libopencv-dev
 
 # Create a build directory.
@@ -27,9 +29,13 @@ cd /build
 # Build and run.
 cmake ..
 make
-# For building stereogram:
-./stereogramBuilder -t=../texture/wood.jpg -d=../depthmap/girl.jpg
 
-# For solving your stereogram:
-./stereogramSolver -s=../stereogram/shark.png
+# For building stereogram:
+./stereogramBuilder -t=../texture/texture_1.jpg -d=../depthmap/shark.jpg
+
+# For solving stereogram:
+./stereogramSolver -s=../stereogram/shark.jpg
+
+# For display result in 3d:
+./pointsCloudDisplayer -c=outSolverCloud.ply
 ```

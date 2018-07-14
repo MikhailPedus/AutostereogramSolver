@@ -148,7 +148,7 @@ void stereogramSolver::reconstructDepthMapPartImg(const cv::Mat partOfStereogram
 		if (completePrecent != currentCompletePrecent) {
 			completePrecent = currentCompletePrecent;
 			std::lock_guard<std::mutex> locker(m_PrintLocker);
-			std::cout << "Tread " << threadIndex << ". Complete precent: " << completePrecent << std::endl;
+			std::cout << "Thread " << threadIndex << ". Complete precent: " << completePrecent << std::endl;
 		}
 	}
 	*outDepthMap *= 255 / (offset / 4);

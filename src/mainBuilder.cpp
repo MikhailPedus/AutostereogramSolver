@@ -65,6 +65,7 @@ int main(int argc, char **argv) {
 		help();
 		return -1;
 	}
+	std::cout<< "Generate file:" << saveResultPath <<std::endl;
 
 	return 0;
 }
