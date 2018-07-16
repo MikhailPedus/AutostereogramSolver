@@ -17,10 +17,8 @@ Although simple, this algorithm seems to work relatively well and is efficient t
 ## Install
 
 ```
-# Install dependencies.
-apt-get install libgtk2.0-dev
-apt-get install libvtk6-dev
-apt-get install libopencv-dev
+# Required dependencies.
+opencv version 4, configured with vtk
 
 # Create a build directory.
 mkdir /build
