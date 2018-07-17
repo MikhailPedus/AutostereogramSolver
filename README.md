@@ -21,8 +21,8 @@ Although simple, this algorithm seems to work relatively well and is efficient t
 opencv version 4, configured with vtk
 
 # Create a build directory.
-mkdir /build
-cd /build
+mkdir build
+cd build
 
 # Build and run.
 cmake ..
