@@ -67,10 +67,14 @@ int main(int argc, char **argv) {
 	else {
 		std::cout << "Success!!" << std::endl;
 		std::vector<cv::Point3f> points = convertMatToPointsCloud(depthMap);
-
+#ifdef OPENCV_VIZCORE_HPP
 		cv::viz::writeCloud(savePointsCloudPath, points);
+		std::cout << "Generate file:" << savePointsCloudPath << std::endl;
+#else
+		std::cout << "Can not generate file:" << savePointsCloudPath << 
+			" because your opencv version compiled without viz module. Please rebuild opencv with vtk and try again." << std::endl;
+#endif
 	}
-	std::cout<< "Generate file:" << savePointsCloudPath <<std::endl;
 	try {
 		cv::imwrite(saveResultPath, depthMap);
 	}

@@ -10,6 +10,7 @@ static void help() {
 
 int main(int argc, char **argv) {
 
+#ifdef OPENCV_VIZCORE_HPP
     cv::CommandLineParser parser(argc, argv,
             "{help||}{c||}");
 
@@ -26,7 +27,7 @@ int main(int argc, char **argv) {
     }
 
     cv::Mat points;
-    try {
+	try {
         points = cv::viz::readCloud(pointsCloudStoragePath);
     } catch(cv::Exception& e) {
         std::cout<< e.what() <<std::endl;
@@ -37,11 +38,15 @@ int main(int argc, char **argv) {
         help();
         return -1;
     }
+
+
     cv::viz::Viz3d myWindow("pointsCloudDisplayer");
 
     myWindow.showWidget("pointsCloudDisplayer",  cv::viz::WPaintedCloud(points));
 
     myWindow.spin();
-
+#else
+	std::cout << "Your opencv version compiled without viz module. Please rebuild opencv with vtk and try again.";
+#endif
     return 0;
 }
