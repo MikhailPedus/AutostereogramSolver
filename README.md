@@ -2,7 +2,7 @@
 
 Attempts to solve [autostereograms](http://en.wikipedia.org/wiki/Autostereogram) programmatically.
 
-![Screenshot](https://raw.githubusercontent.com/MikhailPedus/AutostereogramSolver/master/SharkSolved.png)
+![Screenshot](https://raw.githubusercontent.com/MikhailPedus/AutostereogramSolver/master/MainPicture.jpg)
 
 ## How it works
 
