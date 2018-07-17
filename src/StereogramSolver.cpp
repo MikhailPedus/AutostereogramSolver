@@ -89,19 +89,32 @@ int stereogramSolver::findRepeatOffset(const cv::Mat& stereogram) const {
 	}
 	int minDifference = -1;
 	int bestStep = -1;
-	for (int i = stereogram.cols / MAX_REPEAT_SEGMENTS_COUNT; i < stereogram.cols / MIN_REPEAT_SEGMENTS_COUNT; i++) {
+	std::vector<std::pair<int, int>> storage;	//all overlaps result storage
+	for (int i = stereogram.cols / MAX_REPEAT_SEGMENTS_COUNT; i < stereogram.cols / MIN_REPEAT_SEGMENTS_COUNT; ++i) {
 		int currentDiff = 0;
-		for (int r = 0; r < stereogram.rows; r++) {
-			for (int c = 0; c < stereogram.cols - i; c++) {
+		for (int r = 0; r < stereogram.rows; ++r) {
+			for (int c = 0; c < stereogram.cols - i; ++c) {
 				for (int nChannel = 0; nChannel < stereogram.channels(); ++nChannel) {
 					currentDiff += std::abs(stereogram.at<unsigned char>(r, c * stereogram.channels() + nChannel) - 
 						stereogram.at<unsigned char>(r, (c + i) * stereogram.channels() + nChannel));
 				}
 			}
 		}
+		storage.push_back(std::pair<int,int>(i, currentDiff));
 		if (minDifference < 0 || currentDiff < minDifference) {
 			minDifference = currentDiff;
 			bestStep = i;
+		}
+	}
+	auto halfShiftIt = std::find_if(storage.begin(), storage.end(), [=](const std::pair<int, int>& elem) -> bool {
+		return elem.first == bestStep / 2;
+	});
+	if (halfShiftIt != storage.end()) {
+		int halfShift_i, halfShift_dif;
+		std::tie(halfShift_i, halfShift_dif) = *halfShiftIt;
+		if (static_cast<double>(std::abs(halfShift_dif - minDifference)) / static_cast<double>(minDifference) < 0.5) {
+			std::cout << "difference precentage" << static_cast<double>(std::abs(halfShift_dif - minDifference)) / static_cast<double>(minDifference) << std::endl;
+			return halfShift_i;
 		}
 	}
 	return bestStep;
@@ -125,7 +138,7 @@ void stereogramSolver::reconstructDepthMapPartImg(const cv::Mat partOfStereogram
 			}*/
 			int bestDepth = 0;
 			double bestDiff = -1;
-			for (int depth = 0; depth < offset / 2; depth++) {
+			for (int depth = 0; depth < offset / 2; ++depth) {
 				double currentDiff = 0;
 				for (int nChannel = 0; nChannel < partOfStereogram.channels(); ++nChannel) {
 					//assert(nChannel < pixelAfterOffset.size());
