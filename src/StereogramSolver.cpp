@@ -22,6 +22,9 @@ cv::Mat stereogramSolver::reconstructDepthMap(const cv::Mat& stereogram, int cou
 
 	//find offset
 	int offset = findRepeatOffset(stereogram);
+	if (offset <= 0) {
+		return cv::Mat();
+	}
 
 	//calc height each chunk
 	int step = stereogram.rows / countThreads;
