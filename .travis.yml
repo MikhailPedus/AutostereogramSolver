@@ -10,14 +10,19 @@ compiler:
   - gcc
   
 install:
-  - BUILD_DIR="${TRAVIS_BUILD_DIR}/build"
-  - mkdir ${BUILD_DIR} && cd ${BUILD_DIR}
+  - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
+  - mkdir ${DEPS_DIR} && cd ${DEPS_DIR}
   
-  # Go to the Root directory  
+  - |
+    if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+      CMAKE_URL="http://www.cmake.org/files/v3.3/cmake-3.3.2-Linux-x86_64.tar.gz"
+      mkdir cmake && travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C cmake
+      export PATH=${DEPS_DIR}/cmake/bin:${PATH}
+    fi
+# Go to the Root directory  
   - cd ..
-
 # Build steps
 script:
   - mkdir build
   - cd build
-  - ..cmake && make
+  - ${DEPS_DIR}/cmake/bin/cmake .. && make
