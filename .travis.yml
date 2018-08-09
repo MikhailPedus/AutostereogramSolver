@@ -27,5 +27,5 @@ script:
   - mkdir build
   - cd build
   - ${DEPS_DIR}/cmake/bin/cmake .. && make
-  - stereogramBuilder -t ../texture/texture_1.jpg -d ../depthmap/shark.jpg
-  - stereogramSolver -s buildOutput.jpg
+  - ./stereogramBuilder -t ../texture/texture_1.jpg -d ../depthmap/shark.jpg
+  - ./stereogramSolver -s buildOutput.jpg
