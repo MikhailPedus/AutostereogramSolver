@@ -1,0 +1,23 @@
+sudo: required
+before_install:
+  - sudo apt-get install libopencv-dev
+  
+# Enable C++ support
+language: cpp
+
+# Compiler selection
+compiler:
+  - gcc
+  
+install:
+  - BUILD_DIR="${TRAVIS_BUILD_DIR}/build"
+  - mkdir ${BUILD_DIR} && cd ${BUILD_DIR}
+  
+  # Go to the Root directory  
+  - cd ..
+
+# Build steps
+script:
+  - mkdir build
+  - cd build
+  - ..cmake && make
