@@ -12,25 +12,31 @@ static void help() {
 
 int main(int argc, char **argv) {
 
-	cv::CommandLineParser parser(argc, argv,
-		"{help||}{t||}{d||}{o|outBuilder.jpg|}{g||}");
+	std::string texturePath("undef_texture_path");
+	std::string depthMapPath("undef_depthMap_path");
+	std::string saveResultPath("buildOutput.jpg");
 
-	if (parser.has("help")) {
-		help();
-		return 0;
-	}
-	std::string texturePath = parser.get<std::string>("t");
-	std::string depthMapPath = parser.get<std::string>("d");
-	std::string saveResultPath = parser.get<std::string>("o");
 	bool LOAD_GRAYSCALSE = false;
-	if (parser.has("g")) LOAD_GRAYSCALSE = true;
-	
-	if (!parser.check()) {
-		help();
-		parser.printErrors();
-		return -1;
-	}
 
+	for (int i = 1; i < argc; i++)
+	{
+		const char* s = argv[i];
+		if (strcmp(s, "-t") == 0) {
+			texturePath = argv[++i];
+		}
+		else if (strcmp(s, "-d") == 0) {
+			depthMapPath = argv[++i];
+		}
+		else if (strcmp(s, "-o") == 0)
+		{
+			saveResultPath = argv[++i];
+		}
+		else if (strcmp(s, "-g") == 0)
+		{
+			LOAD_GRAYSCALSE = true;
+		}
+	}
+	
 	cv::Mat texture = cv::imread(texturePath, LOAD_GRAYSCALSE ? cv::IMREAD_GRAYSCALE : cv::IMREAD_COLOR);
 	if (texture.empty()) {
 		std::cout << "ERROR. Cannot load texture image by path:" << texturePath << std::endl;

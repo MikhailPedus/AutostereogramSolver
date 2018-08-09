@@ -11,20 +11,16 @@ static void help() {
 int main(int argc, char **argv) {
 
 #ifdef OPENCV_VIZCORE_HPP
-    cv::CommandLineParser parser(argc, argv,
-            "{help||}{c||}");
+    
+	std::string pointsCloudStoragePath("outSolverCloud.ply");
 
-    if (parser.has("help")) {
-            help();
-            return 0;
-    }
-    std::string pointsCloudStoragePath = parser.get<std::string>("c");
-
-    if (!parser.check()) {
-            help();
-            parser.printErrors();
-            return -1;
-    }
+    for (int i = 1; i < argc; i++)
+	{
+		const char* s = argv[i];
+		if (strcmp(s, "-c") == 0) {
+			pointsCloudStoragePath = argv[++i];
+		}
+	}
 
     cv::Mat points;
 	try {

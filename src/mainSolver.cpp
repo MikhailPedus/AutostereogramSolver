@@ -28,24 +28,33 @@ std::vector<cv::Point3f> convertMatToPointsCloud(const cv::Mat& img) {
 }
 int main(int argc, char **argv) {
 
-	cv::CommandLineParser parser(argc, argv,
-		"{help||}{s||}{t|2|}{od|outSolverDepthMap.jpg|}{oc|outSolverCloud.ply|}{g||}");
-
-	if (parser.has("help")) {
-		help();
-		return 0;
-	}
-	std::string stereogramPath = parser.get<std::string>("s");
-	int threadsCount = parser.get<int>("t");
-	std::string saveResultPath = parser.get<std::string>("od");
-	std::string savePointsCloudPath = parser.get<std::string>("oc");
+	std::string stereogramPath("undefStereogrammpath");
+	int threadsCount = 2;
+	std::string saveResultPath("outSolverDepthMap.jpg");
+	std::string savePointsCloudPath("outSolverCloud.ply");
 	bool LOAD_GRAYSCALE = false;
-	if (parser.has("g")) LOAD_GRAYSCALE = true;
 
-	if (!parser.check()) {
-		help();
-		parser.printErrors();
-		return -1;
+	for (int i = 1; i < argc; i++)
+	{
+		const char* s = argv[i];
+		if (strcmp(s, "-s") == 0) {
+			stereogramPath = argv[++i];
+		}
+		else if (strcmp(s, "-t") == 0) {
+			threadsCount = std::atoi(argv[++i]);
+		}
+		else if (strcmp(s, "-od") == 0)
+		{
+			saveResultPath = argv[++i];
+		}
+		else if (strcmp(s, "-oc") == 0)
+		{
+			savePointsCloudPath = argv[++i];
+		}
+		else if (strcmp(s, "-g") == 0)
+		{
+			LOAD_GRAYSCALE = true;
+		}
 	}
 
 	cv::Mat stereogram = cv::imread(stereogramPath, LOAD_GRAYSCALE ? cv::IMREAD_GRAYSCALE : cv::IMREAD_COLOR);
