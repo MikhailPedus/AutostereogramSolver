@@ -1,7 +1,8 @@
 sudo: required
 before_install:
+  - sudo apt-get install build-essential
+  - sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
   - sudo apt-get install libvtk5-dev
-  - sudo apt-get install libopencv-dev
   
 # Enable C++ support
 language: cpp
@@ -24,6 +25,13 @@ install:
   - cd ..
 # Build steps
 script:
+  - git clone https://github.com/opencv/opencv.git opencv
+  - cd opencv
+  - mkdir release
+  - cd release
+  - ${DEPS_DIR}/cmake/bin/cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local .. && make
+  - sudo make install
+  - cd ../../
   - mkdir build
   - cd build
   - ${DEPS_DIR}/cmake/bin/cmake .. && make
