@@ -23,7 +23,7 @@ Although simple, this algorithm seems to work relatively well and is efficient t
 sudo apt-get install libvtk5-dev
 
 # Configure and compile your opencv with "viz" module
-- [OpenCV install instruction (Linux)](https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation)
+- OpenCV install instruction (Linux)(https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation)
 
 # Create a build directory.
 mkdir build
