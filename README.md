@@ -20,22 +20,24 @@ Although simple, this algorithm seems to work relatively well and is efficient t
 
 ```
 # Required dependencies.
-opencv version 4, configured with vtk
+sudo apt-get install libvtk5-dev
+
+# Download opencv sources from official github repository by url: https://github.com/opencv/opencv. 
+# Configure and compile your opencv with "viz" module
 
 # Create a build directory.
 mkdir build
 cd build
 
 # Build and run.
-cmake ..
-make
+cmake .. && make
 
 # For building stereogram:
-./stereogramBuilder -t=../texture/texture_1.jpg -d=../depthmap/shark.jpg
+./stereogramBuilder -t ../texture/texture_1.jpg -d ../depthmap/shark.jpg
 
 # For solving stereogram:
-./stereogramSolver -s=../stereogram/shark.jpg
+./stereogramSolver -s buildOutput.jpg
 
 # For display result in 3d:
-./pointsCloudDisplayer -c=outSolverCloud.ply
+./pointsCloudDisplayer -c outSolverCloud.ply
 ```
