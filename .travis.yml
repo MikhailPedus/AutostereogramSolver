@@ -25,7 +25,7 @@ install:
   - cd ..
 # Build steps
 script:
-  - git clone https://github.com/opencv/opencv.git opencv
+  - git clone https://github.com/opencv/opencv.git -b 2.4 opencv
   - cd opencv
   - mkdir release
   - cd release
