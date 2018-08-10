@@ -29,7 +29,7 @@ script:
   - cd opencv
   - mkdir release
   - cd release
-  - cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_VTK=ON .. && make
+  - cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_VTK=ON -D BUILD_opencv_flann=OFF -D BUILD_opencv_features2d=OFF -D BUILD_opencv_calib3d=OFF -D BUILD_opencv_ml=OFF -D BUILD_opencv_video=OFF -D BUILD_opencv_legacy=OFF -D BUILD_opencv_objdetect=OFF -D BUILD_opencv_photo=OFF -D BUILD_opencv_gpu=OFF -D BUILD_opencv_ocl=OFF -D BUILD_opencv_nonfree=OFF -D BUILD_opencv_contrib=OFF -D BUILD_opencv_java=OFF -D BUILD_opencv_superres=OFF -D BUILD_opencv_ts=OFF -D BUILD_opencv_videostab=OFF .. && make
   - sudo make install
   - cd ../../
   - mkdir build
