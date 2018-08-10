@@ -3,6 +3,7 @@
 #include <thread>
 #include <mutex>
 
+#include <iostream>
 #include <opencv2/opencv.hpp>
 
 #define MIN_REPEAT_SEGMENTS_COUNT 4
