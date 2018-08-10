@@ -1,5 +1,6 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
+#include <opencv2/viz.hpp>
 
 static void help() {
         printf("\nThis is a points cloud 3d displayer.\n"
@@ -10,9 +11,8 @@ static void help() {
 
 int main(int argc, char **argv) {
 
-#ifdef OPENCV_VIZCORE_HPP
-    
-	std::string pointsCloudStoragePath("outSolverCloud.ply");
+#if(defined __OPENCV_VIZ_HPP__ || defined OPENCV_VIZ_HPP)
+    std::string pointsCloudStoragePath("outSolverCloud.ply");
 
     for (int i = 1; i < argc; i++)
 	{

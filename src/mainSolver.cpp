@@ -1,4 +1,5 @@
 #include "StereogramSolver.h"
+#include <opencv2/viz.hpp>
 static void help() {
 	printf("\nThis is a autostereogram solver.\n"
 		"Usage: stereogramSolver\n"
@@ -75,14 +76,14 @@ int main(int argc, char **argv) {
 	}
 	else {
 		std::cout << "Success!!" << std::endl;
-//#ifdef OPENCV_VIZCORE_HPP
+#if(defined __OPENCV_VIZ_HPP__ || defined OPENCV_VIZ_HPP)
 		std::vector<cv::Point3f> points = convertMatToPointsCloud(depthMap);
 		cv::viz::writeCloud(savePointsCloudPath, points);
 		std::cout << "Generate file:" << savePointsCloudPath << std::endl;
-//#else
-//		std::cout << "Can not generate file:" << savePointsCloudPath << 
-//			" because your opencv version compiled without viz module. Please rebuild opencv with vtk and try again." << std::endl;
-//#endif
+#else
+		std::cout << "Can not generate file:" << savePointsCloudPath << 
+			" because your opencv version compiled without viz module. Please rebuild opencv with vtk and try again." << std::endl;
+#endif
 	}
 	try {
 		cv::imwrite(saveResultPath, depthMap);
