@@ -1,6 +1,7 @@
 #ifndef STEREOGRAMBUILDER_H
 #define STEREOGRAMBUILDER_H
 
+#include <iostream>
 #include <opencv2/opencv.hpp>
 
 #define DEPTH_LAYERS_COUNT 16
