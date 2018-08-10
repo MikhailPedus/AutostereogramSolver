@@ -29,11 +29,11 @@ script:
   - cd opencv
   - mkdir release
   - cd release
-  - ${DEPS_DIR}/cmake/bin/cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local .. && make
+  - cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local .. && make
   - sudo make install
   - cd ../../
   - mkdir build
   - cd build
-  - ${DEPS_DIR}/cmake/bin/cmake .. && make
+  - cmake .. && make
   - ./stereogramBuilder -t ../texture/texture_1.jpg -d ../depthmap/shark.jpg
   - ./stereogramSolver -s buildOutput.jpg
