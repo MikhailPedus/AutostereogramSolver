@@ -20,10 +20,20 @@ Although simple, this algorithm seems to work relatively well and is efficient t
 
 ```
 # Required dependencies.
+sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 sudo apt-get install libvtk5-dev
 
-# Configure and compile your opencv with "viz" module
-- OpenCV install instruction (Linux)(https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation)
+# Configure and compile opencv with "viz" module.
+git clone https://github.com/opencv/opencv.git -b 2.4 opencv
+cd opencv
+mkdir release
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_VTK=ON -D BUILD_opencv_flann=OFF -D BUILD_opencv_features2d=OFF -D BUILD_opencv_calib3d=OFF -D BUILD_opencv_ml=OFF -D BUILD_opencv_video=OFF -D BUILD_opencv_legacy=OFF -D BUILD_opencv_objdetect=OFF -D BUILD_opencv_photo=OFF -D BUILD_opencv_gpu=OFF -D BUILD_opencv_ocl=OFF -D BUILD_opencv_nonfree=OFF -D BUILD_opencv_contrib=OFF -D BUILD_opencv_java=OFF -D BUILD_opencv_superres=OFF -D BUILD_opencv_ts=OFF -D BUILD_opencv_videostab=OFF .. && make
+sudo make install
+
+#Go to root directory.
+cd ../../
 
 # Create a build directory.
 mkdir build
