@@ -58,8 +58,8 @@ cv::Mat stereogramSolver::reconstructDepthMap(const cv::Mat& stereogram, int cou
 	}
 
 	//wait all threads join
-	for (const auto& i : m_threads) {
-		if (i && i) i->join();
+	for (auto& i : m_threads) {
+		if (i) i->join();
 	}
 
 	std::cout << "All threads finished!!" << std::endl;
@@ -77,7 +77,7 @@ cv::Mat stereogramSolver::reconstructDepthMap(const cv::Mat& stereogram, int cou
 	}
 	//clear m_thread memory
 	for (auto& i : m_threads) {
-		if(i) delete i;
+		if (i) delete i;
 		i = nullptr;
 	}
 	m_threads.clear();
