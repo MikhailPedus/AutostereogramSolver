@@ -37,3 +37,5 @@ script:
   - cmake .. && make
   - ./stereogramBuilder -t ../texture/texture_1.jpg -d ../depthmap/shark.jpg
   - ./stereogramSolver -s buildOutput.jpg
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
