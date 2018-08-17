@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/MikhailPedus/AutostereogramSolver.svg?branch=master)](https://travis-ci.org/MikhailPedus/AutostereogramSolver)
 
+
 ## Auto Stereogram Solver
 
 Attempts to solve [autostereograms](http://en.wikipedia.org/wiki/Autostereogram) programmatically.
