@@ -39,7 +39,7 @@ script:
   - ./stereogramSolver -s buildOutput.jpg
 after_success:
   # Creating report
-  - cd ${TRAVIS_BUILD_DIR}
+  - cd ..
   - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
   - sudo ./get_code_cov.sh
   # Uploading report to CodeCov
