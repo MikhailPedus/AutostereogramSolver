@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd CMakeFiles/stereogramTest.dir/src
-
+ls -al
 for file in *.cpp.gcno*
 do
   cp "$file" "${file/.cpp.gcno/.gcno}"
