@@ -8,12 +8,14 @@
 #define REPEAT_OFFSET 200
 
 class stereogramBuilder {
-public:
-	stereogramBuilder();
-	~stereogramBuilder();
+ public:
+  stereogramBuilder();
+  ~stereogramBuilder();
 
-	cv::Mat generateStereogramm(const cv::Mat& texture, const cv::Mat& depthMap);
-private:
-	cv::Mat generateBackground(const cv::Mat& texture, const cv::Size& size) const;
+  cv::Mat generateStereogramm(const cv::Mat& texture, const cv::Mat& depthMap);
+
+ private:
+  cv::Mat generateBackground(const cv::Mat& texture,
+                             const cv::Size& size) const;
 };
 #endif
