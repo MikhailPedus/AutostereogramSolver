@@ -1,5 +1,23 @@
 #include "StereogramSolver.h"
 
+std::vector<cv::Point3f> convertMatToPointsCloud(const cv::Mat& img) {
+  std::vector<cv::Point3f> outArray;
+  if (img.type() == CV_8UC1) {
+    for (int r = 0; r < img.rows; ++r) {
+      for (int c = 0; c < img.cols; ++c) {
+        if (img.at<unsigned char>(r, c) > 5) {
+          outArray.push_back(cv::Point3f(r, c, img.at<unsigned char>(r, c)));
+        }
+      }
+    }
+  } else {
+    std::cout << "std::vector<cv::Point3f> convertMatToPointsCloud(const "
+                 "cv::Mat& img) need CV_8UC1 mat as input. Current type is:"
+              << img.type() << std::endl;
+  }
+  return outArray;
+}
+
 stereogramSolver::stereogramSolver() : m_countThreads(1) {
   std::cout << "stereogramSolver::stereogramSolver() " << this << std::endl;
 }

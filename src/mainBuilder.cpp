@@ -4,12 +4,10 @@ static void help() {
   printf(
       "\nThis is a autostereogram builder.\n"
       "Usage: stereogramBuilder\n"
-      "		-t=<path>			# the path to texture image\n"
-      "		-d=<path>			# the path to depth map image\n"
-      "		[-o=<path>]			# the path to save result "
-      "image\n"
-      "		[-g]				# load texture image as "
-      "GRAYSCALE\n"
+      "     -t=<path>            # the path to texture image\n"
+      "     -d=<path>            # the path to depth map image\n"
+      "    [-o=<path>]           # the path to save result image\n"
+      "    [-g]                  # load texture image as GRAYSCALE\n"
       "\n");
 }
 

@@ -35,12 +35,12 @@ script:
   - mkdir build
   - cd build
   - cmake .. && make
-  - ./stereogramBuilder -t ../texture/texture_1.jpg -d ../depthmap/shark.jpg
-  - ./stereogramSolver -s buildOutput.jpg
+  - ./stereogramTest
 after_success:
   # Creating report
-  - cd ..
+  - 
   - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
-  - sudo ./get_code_cov.sh
+  - ./../copy_gc_files_with_rename.sh
+  - ./../get_code_cov.sh
   # Uploading report to CodeCov
   - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"

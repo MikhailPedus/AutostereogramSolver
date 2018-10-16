@@ -10,6 +10,8 @@
 #define MAX_REPEAT_SEGMENTS_COUNT 20
 #define MATCH_BLOCKS_WIDTH 10
 
+std::vector<cv::Point3f> convertMatToPointsCloud(const cv::Mat& img);
+
 class stereogramSolver {
  public:
   stereogramSolver();
