@@ -25,6 +25,7 @@ sudo apt-get install build-essential
 sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 sudo apt-get install libvtk5-dev
 
+
 # Configure and compile opencv with "viz" module.
 git clone https://github.com/opencv/opencv.git -b 2.4 opencv
 cd opencv
